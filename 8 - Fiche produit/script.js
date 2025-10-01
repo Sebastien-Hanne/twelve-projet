@@ -16,7 +16,7 @@ const btnAdd = document.querySelector(".btn-add");
 
 // 4. Je recupere la balise vide de message d'ajout du panier
 const panierMsg = document.querySelector(".panier-msg");
-// 5. Je crée une variable qui contient le nombre de produits ajoutées ua panier
+// 5. Je crée une variable qui contient le nombre de produits ajoutées au panier
 let panier = 0;
 
 // ...

@@ -17,7 +17,7 @@ window.addEventListener("scroll",onScrollDisplayModal);
 // 5. Je fais disparaite la modale au clique sur la croix
 modalQuit.addEventListener("click",function(){
     // ...
-
+    modal.remove(modalQuit)
     window.removeEventListener("scroll",onScrollDisplayModal);
 });
 
@@ -27,5 +27,7 @@ modalQuit.addEventListener("click",function(){
  */
 function onScrollDisplayModal(){
     console.log("Ouiiii je scroollll");
-
+    if (window.scrollY >= section1.offsetTop + 300){
+        modal.style.display = "flex";
+    } 
 }
