@@ -27,7 +27,8 @@ const message = document.getElementById("message");
 form.addEventListener("submit",function(event){
     // 3. J'annule le comportement par défaut du formulaire  : qui consiste à envoyer une requete http GET à l'adresse de l'attribut action du formualire et donc recharger la page
     event.preventDefault();
-    // ..
+   
+    
 });
 
 /**
