@@ -29,11 +29,80 @@ form.addEventListener("submit",function(event){
     event.preventDefault();
    
     
+    let isValid = true;
+
+    const prenomValue = prenom.value.trim();
+    const nomValue = nom.value.trim();
+    const emailValue = email.value.trim();
+    const messageValue = message.value.trim();
+
+    // Vérif prénom
+    if (prenomValue.length < 3 || prenomValue.length > 20) {
+    showError(prenom, "Le prénom doit contenir entre 3 et 20 caractères");
+    isValid = false;
+    } else {
+    clearError(prenom);
+}
+
+    // Vérif nom
+    if (nomValue.length < 3 || nomValue.length > 20) {
+    showError(nom, "Le nom doit contenir entre 3 et 20 caractères");
+    isValid = false;
+    } else {
+    clearError(nom);
+}
+
+    // Vérif email
+    if (!isValidEmail(emailValue)) {
+        showError(email, "Email invalide");
+        isValid = false;
+    } else {
+        clearError(email);
+    }
+
+// Vérif message
+    if (messageValue.length < 10) {
+        showError(message, "Le message doit contenir au moins 10 caractères");
+        isValid = false;
+    } else {
+        clearError(message);
+    }
+
+    if (isValid) {
+        console.log("Formulaire valide !");
+        form.reset();
+    }
 });
 
 /**
  * HELPERS FUNCTIONS
  */
+
+/**
+ * Affiche un message d'erreur pour un champ donné.
+ */
+
+function showError(input, message) {
+    let errorElem = input.nextElementSibling;
+    if (!errorElem || !errorElem.classList.contains('error-message')) {
+        errorElem = document.createElement('span');
+        errorElem.className = 'error-message';
+        input.parentNode.insertBefore(errorElem, input.nextSibling);
+    }
+    errorElem.textContent = message;
+    input.classList.add('input-error');
+}
+
+/**
+ * Efface le message d'erreur pour un champ donné.
+ */
+function clearError(input) {
+    let errorElem = input.nextElementSibling;
+    if (errorElem && errorElem.classList.contains('error-message')) {
+        errorElem.textContent = '';
+    }
+    input.classList.remove('input-error');
+}
 /**
  * Renvoie vrai si la string email passé en paramètre correspond à une adresse email valide.
  */
